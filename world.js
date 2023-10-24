@@ -8,6 +8,15 @@ function parede(x, y, width, height) {
     });
 }
 
+function paredeColorida (x, y, width, height, color){ 
+return Matter.Bodies.rectangle(x, y, width, height, {
+
+    isStatic: true,
+    render: {
+        fillStyle: color
+    }
+});
+}
 // Player
 function dueloVisual(gerente) {
     let player1Visual = Matter.Bodies.polygon(90, 330, gerente.player1.qtdLados, gerente.player1.raio, {
@@ -147,11 +156,12 @@ Matter.World.add(engine.world, [
     parede(280, 800, 2000, 20), // bottom
     parede(0, 400, 20, 1024),   // left
     parede(1024, 400, 20, 1024), // right
+    paredeColorida(512, 200, 20, 512, "#000000")
 ]);
 
 // Criação dos players
-let player1 = new Player('Alex', 6, 70, '#888888', 17, 15);
-let player2 = new Player('Sandro', 5, 40, '#333333', 10, 12);
+let player1 = new Player('Alex', 6, 70, '#888888', 17, 11);
+let player2 = new Player('Sandro', 5, 40, '#333333', 15, 15);
 let juiz = new GerenciadorDeDuelo(player1, player2)
 
 // Posicionamento dos players na tela
